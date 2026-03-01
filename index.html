@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAPPY BIRTHDAY 💙</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
+  background:black;
+}
+
+/* BLUR BACKGROUND */
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('boy.jpeg') center/cover no-repeat;
+  filter:blur(22px) brightness(1.15);
+  z-index:-2;
+}
+
+/* OVERLAY */
+body::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.55),rgba(180,220,255,0.7));
+  z-index:-1;
+}
+
+/* CARD */
+.card{
+  width:92%;
+  max-width:420px;
+  height:88vh;
+  background:rgba(255,255,255,0.65);
+  backdrop-filter:blur(25px);
+  border-radius:35px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,0.35);
+  display:flex;
+  flex-direction:column;
+  animation:slideUp 1.2s ease;
+}
+
+/* PROFILE */
+.profile{
+  width:155px;
+  height:155px;
+  border-radius:50%;
+  object-fit:cover;
+  margin:0 auto 15px;
+  border:5px solid white;
+  box-shadow:0 0 35px rgba(80,160,255,1);
+  animation:pulse 2.5s infinite;
+}
+
+/* TEXT */
+h1{
+  font-size:26px;
+  color:#1e4fa3;
+  text-shadow:0 0 15px #9cc9ff;
+}
+
+/* BUTTON */
+button{
+  margin-top:15px;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#5f9cff,#a5d4ff);
+  color:white;
+  font-size:17px;
+  cursor:pointer;
+  transition:0.4s;
+}
+button:hover{
+  transform:scale(1.12);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.hidden{display:none;}
+
+/* WISHES */
+.wishes{
+  flex:1;
+  overflow-y:auto;
+  font-size:15px;
+  line-height:1.9;
+  color:#222;
+  padding-right:8px;
+  animation:fadeIn 2s ease;
+}
+
+/* SPARKLES */
+.spark{
+  position:fixed;
+  font-size:18px;
+  pointer-events:none;
+  animation:sparkle 1.2s forwards;
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  color:#ff4d6d;
+  font-size:16px;
+  animation:float 3s linear forwards;
+}
+
+/* END */
+.ending{
+  font-size:28px;
+  color:#1e4fa3;
+  animation:glow 2s infinite alternate;
+}
+
+/* ANIMATIONS */
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.07);}
+  100%{transform:scale(1);}
+}
+@keyframes sparkle{
+  0%{opacity:1;transform:scale(0);}
+  100%{opacity:0;transform:scale(2);}
+}
+@keyframes float{
+  0%{opacity:1;transform:translateY(0);}
+  100%{opacity:0;transform:translateY(-150px);}
+}
+@keyframes glow{
+  from{text-shadow:0 0 10px #9cc9ff;}
+  to{text-shadow:0 0 30px #3d8bff;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- CARD 1 -->
+<div class="card" id="c1">
+  <img src="boy . jpeg.jpeg" class="profile">
+  <h1>Hemloooooooooo ksyyyyyy hain thik hainn okasss than 😁Tap To Begin 💙</h1>
+  <button onclick="go1()">Start</button>
+</div>
+
+<!-- CARD 2 -->
+<div class="card hidden" id="c2">
+  <img src="boy . jpeg.jpeg" class="profile">
+  <h1>HAPPY BIRTHDAY 🎂💙</h1>
+  <div class="wishes" id="wishBox"></div>
+  <button onclick="go2()">Continue</button>
+</div>
+
+<!-- CARD 3 -->
+<div class="card hidden" id="c3">
+  <img src="boy . jpeg.jpeg" class="profile">
+  <h1>Will you always be my forever friend? 💙</h1>
+  <button onclick="go3()">Yes Always 💙</button>
+</div>
+
+<!-- CARD 4 -->
+<div class="card hidden" id="c4">
+  <img src="boy . jpeg.jpeg" class="profile">
+   
+  <h1 class="ending">FOREVER FRIEND 💙✨ than byeee byeee tatatatata</h1>
+</div>
+
+<script>
+// WISHES
+let box = document.getElementById("wishBox");
+
+// First 10 lines: praise / compliments
+let compliments = [
+  "You are amazing in every way, your smile lights up every room 💫",
+  "Your kindness and generosity inspire everyone around you 🌟",
+  "You have a heart of gold and a spirit that never quits 💙",
+  "Your laughter is contagious, and your presence is comforting 😊",
+  "You shine bright like a star in everything you do ✨",
+  "Your creativity is unmatched, and you make the world colorful 🎨",
+  "You are strong, brave, and capable of anything 💪",
+  "Your honesty and integrity make people trust and love you 🕊️",
+  "You are unique, rare, and truly one of a kind 🌸",
+  "Your friendship is priceless, and your support means everything 💖"
+];
+
+compliments.forEach(line => box.innerHTML += `💙 ${line}<br><br>`);
+
+// Add 500+ stylish wishes
+for(let i=0; i<510; i++){
+  let msgs = [
+    "May your day be filled with endless joy and laughter 🎉",
+    "Wishing you happiness that lasts forever and ever 💫",
+    "May your dreams take flight and your heart stay light 🌈",
+    "You deserve all the love, success, and smiles today 💖",
+    "Celebrate yourself today, because you are simply amazing 🎂",
+    "May every moment bring you warmth, happiness, and love 🌟",
+    "Your journey ahead is full of endless possibilities 🚀",
+    "Keep shining bright, because the world needs your light ✨",
+    "May laughter and love surround you on this special day 💙",
+    "Sending you magical wishes for a day as special as you 🦋"
+  ];
+  let rand = msgs[Math.floor(Math.random()*msgs.length)];
+  box.innerHTML += `💙 ${rand}<br><br>`;
+}
+
+// SPARKLES
+setInterval(()=>{
+  let s=document.createElement("div");
+  s.className="spark";
+  s.innerHTML="✨";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1200);
+},400);
+
+// HEARTS
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💙";
+  h.style.left=Math.random()*100+"%";
+  h.style.bottom="0px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),3000);
+},700);
+
+// NAVIGATION
+function go1(){c1.classList.add("hidden"); c2.classList.remove("hidden");}
+function go2(){c2.classList.add("hidden"); c3.classList.remove("hidden");}
+function go3(){c3.classList.add("hidden"); c4.classList.remove("hidden");}
+</script>
+
+</body>
+</html>
